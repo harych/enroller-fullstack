@@ -26,7 +26,7 @@
         props: ['username'],
         data() {
             return {
-                //meetings: []//getMeetings()
+                meetings: getMeetings()
             };
         },
         methods: {
