@@ -26,7 +26,7 @@
         props: ['username'],
         data() {
             return {
-                meetings: getMeetings()
+                meetings: []
             };
         },
         methods: {
@@ -37,7 +37,10 @@
                 //this.meetings.push(meeting);
                 this.$http.post('meetings', meeting)
                 .then(() => {
-                        this.$http.get('meetings');
+                        this.$http.get('meetings')
+                        .then(response=> {
+                            this.meetings = response.body;
+                        });
                     });
             },
             addMeetingParticipant(meeting) {
