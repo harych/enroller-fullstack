@@ -30,17 +30,17 @@
             };
         },
         methods: {
-            getMeetings(){
-                this.$http.get('meetings');
+            getAllMeetings(){
+                this.$http.get('meetings')
+                .then(response=> {
+                    this.meetings = response.body;
+                });
             },
             addNewMeeting(meeting) {
                 //this.meetings.push(meeting);
                 this.$http.post('meetings', meeting)
                 .then(() => {
-                        this.$http.get('meetings')
-                        .then(response=> {
-                            this.meetings = response.body;
-                        });
+                        this.getAllMeetings();
                     });
             },
             addMeetingParticipant(meeting) {

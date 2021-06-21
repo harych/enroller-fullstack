@@ -1,5 +1,5 @@
 <template>
-  <table v-if="meetings.length > 0">
+  <table> // v-if="meetings.length > 0">
     <thead>
     <tr>
       <th>Nazwa spotkania</th>
