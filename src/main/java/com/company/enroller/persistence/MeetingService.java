@@ -32,9 +32,15 @@ public class MeetingService {
         connector.getSession().delete(meeting);
         transaction.commit();
     }
-    public Meeting findById(String id) {
+    public Meeting findById(Long id) {
         return (Meeting) connector.getSession().get(Meeting.class, id);
     }
+
+	public void update(Meeting meeting) {
+		Transaction transaction = connector.getSession().beginTransaction();
+        connector.getSession().update(meeting);
+        transaction.commit();
+	}
 
 
 }

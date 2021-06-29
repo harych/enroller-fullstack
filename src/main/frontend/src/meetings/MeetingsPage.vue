@@ -45,9 +45,17 @@
             },
             addMeetingParticipant(meeting) {
                 meeting.participants.push(this.username);
+                this.$http.update('meetings', meeting)
+                .then(() => {
+                        this.getAllMeetings();
+                    });
             },
             removeMeetingParticipant(meeting) {
                 meeting.participants.splice(meeting.participants.indexOf(this.username), 1);
+                this.$http.update('meetings', meeting)
+                .then(() => {
+                        this.getAllMeetings();
+                    });
             },
             deleteMeeting(meeting) {
                 //this.meetings.splice(this.meetings.indexOf(meeting), 1);
