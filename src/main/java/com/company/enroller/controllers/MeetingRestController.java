@@ -51,6 +51,7 @@ public class MeetingRestController {
         if (meetingService.findById(id) != null) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
+        meeting.setId(id);
         meetingService.update(meeting);
         return new ResponseEntity<Meeting>(HttpStatus.NO_CONTENT);
     }
