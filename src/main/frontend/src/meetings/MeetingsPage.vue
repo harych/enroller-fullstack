@@ -45,7 +45,7 @@
             },
             addMeetingParticipant(meeting) {
                 meeting.participants.push(this.username);
-                this.$http.put(`meetings/{ meeting.id }`, meeting.id, meeting)
+                this.$http.put(`meetings/${ meeting.id }`, meeting.id, meeting)
               /*   .then(() => {
                         this.getAllMeetings();
                     }); */
