@@ -45,7 +45,7 @@ public class MeetingRestController {
         meetingService.delete(meeting);
         return new ResponseEntity<Meeting>(HttpStatus.NO_CONTENT);
     }
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
     public ResponseEntity<?> update(@PathVariable("id") Long id,
                                     @RequestBody Meeting meeting) {
         if (meetingService.findById(id) != null) {
