@@ -23,6 +23,8 @@ public class Meeting {
 
     @Column
     private String date;
+    
+    public Meeting() {}
 
    // @JsonIgnore
     @ManyToMany(mappedBy = "meetings")
