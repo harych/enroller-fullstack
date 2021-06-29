@@ -45,21 +45,21 @@
             },
             addMeetingParticipant(meeting) {
                 meeting.participants.push(this.username);
-                this.$http.update('meetings', meeting)
-                .then(() => {
+                this.$http.update(`meetings/{ meeting.id }`, meeting.id, meeting)
+              /*   .then(() => {
                         this.getAllMeetings();
-                    });
+                    }); */
             },
             removeMeetingParticipant(meeting) {
                 meeting.participants.splice(meeting.participants.indexOf(this.username), 1);
-                this.$http.update('meetings', meeting)
-                .then(() => {
+                this.$http.update(`meetings/${ meeting.id }`, meeting.id, meeting)
+                /* .then(() => {
                         this.getAllMeetings();
-                    });
+                    }); */
             },
             deleteMeeting(meeting) {
                 //this.meetings.splice(this.meetings.indexOf(meeting), 1);
-                this.$http.delete('meetings/${meeting.id}', meeting.id)
+                this.$http.delete(`meetings/${ meeting.id }`, meeting.id)
                 .then(() => {
                         this.getAllMeetings();
                     });
