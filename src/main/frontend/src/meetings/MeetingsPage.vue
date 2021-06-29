@@ -1,6 +1,6 @@
 <template>
   <div>
-    <new-meeting-form @added="addNewMeeting($event)"></new-meeting-form>
+    <new-meeting-form @load="getAllMeetings()" @added="addNewMeeting($event)"></new-meeting-form>
 
     <span v-if="meetings.length == 0">
                Brak zaplanowanych spotkań.
@@ -50,8 +50,15 @@
                 meeting.participants.splice(meeting.participants.indexOf(this.username), 1);
             },
             deleteMeeting(meeting) {
-                this.meetings.splice(this.meetings.indexOf(meeting), 1);
+                //this.meetings.splice(this.meetings.indexOf(meeting), 1);
+                this.$http.delete('meetings/${meeting.id}', meeting.id)
+                .then(() => {
+                        this.getAllMeetings();
+                    });
             }
+        },
+        mounted() {
+            this.getAllMeetings();
         }
     }
 </script>
